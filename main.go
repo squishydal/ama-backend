@@ -46,7 +46,12 @@ func main() {
 	router.Use(cors.Default())
 	router.GET("/api/questions", getAmas)
 	router.POST("/api/questions", postAmas)
-	if err := router.Run(":8080"); err != nil {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	if err := router.Run(":" + port); err != nil {
 		log.Fatal("Failed to start server:", err)
 	}
 }
