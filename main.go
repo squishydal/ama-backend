@@ -80,6 +80,10 @@ func postAmas(c *gin.Context) {
 		return
 	}
 
+	if newAma.AskedBy == "" {
+		newAma.AskedBy = "Anonymous"
+	}
+
 	newAma.ID = bson.NewObjectID()
 	newAma.AnsweredAt = time.Now()
 
