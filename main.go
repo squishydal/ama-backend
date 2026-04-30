@@ -59,7 +59,7 @@ func getAmas(c *gin.Context) {
 		return
 	}
 
-	var results []ama
+	results := []ama{} // ← ini yang bikin [] bukan null
 	if err := cursor.All(context.TODO(), &results); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
